@@ -130,7 +130,7 @@ class ActiveRecord::Base
           associated_records = self.send(name)
           # Paranoid models will have this method, non-paranoid models will not
           associated_records = associated_records.with_deleted if associated_records.respond_to?(:with_deleted)
-          associated_records.each(&:really_destroy!)
+          associated_records.each(&:really_destroy!) if associated_records
         end
       end
       destroy!
